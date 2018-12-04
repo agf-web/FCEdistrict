@@ -1,0 +1,49 @@
+/* Theming */
+body {
+  font-family: "myriad pro", brandon-grotesque, Arial, sans-serif;
+  font-size: 20px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $blue;
+  font-family: $font-family-display;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.btn {
+  border-radius: 0;
+  box-shadow: $box-shadow-lg;
+  font-family: $font-family-display;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 2em 0.75em;
+  text-transform: uppercase;
+}
+
+@include media-breakpoint-down(sm) {
+  .btn {
+    font-size: 16px;
+    padding: 1.5em;
+  }
+}
+
+.btn-default {
+  background: $white;
+}
+
+/* Add option for no gutter rows */
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
