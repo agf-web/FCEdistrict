@@ -19,13 +19,13 @@
   text-align: center;
   h4 {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 }
 
 .section-header p,
 .section-footer p {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 
@@ -45,12 +45,19 @@
   }
 }
 
+.section-hero-contact,
+.section-hero-thanks {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
 .section-hero-entry {
   background-image: url("/img/hero-entry.jpg");
 }
 .section-hero-main {
   background-image: url("/img/hero-main.jpg");
 }
+.section-hero-contact,
 .section-hero-thanks {
   background-image: url("/img/hero-thanks.jpg");
 }
@@ -113,6 +120,20 @@
   .callout {
     padding: 4rem;
     color: #fff;
+    h3 {
+      color: #fff;
+      font-size: 1.75rem;
+      @include media-breakpoint-down(md) {
+        text-align: center;
+      }
+    }
+
+    img {
+      text-align: center;
+      @include media-breakpoint-down(md) {
+        margin-bottom: 2rem;
+      }
+    }
   }
 
   .callout-1 {
@@ -135,7 +156,6 @@
   text-align: center;
 
   .option {
-    padding: 4rem;
   }
   .option-1 {
     background: #ebe7c5;
@@ -143,9 +163,54 @@
   .option-2 {
     background: rgba(193,213,159,0.20);
   }
+
+  .option-content {
+    padding: 4rem 2rem 3rem;
+  }
 }
 
 .section-faq {
+
+  .faq-list {
+    list-style-type: none;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    font-family: $font-family-base;
+    color: $green;
+    font-weight: bold;
+
+    @include media-breakpoint-down(md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    li {
+      display: flex;
+      margin-bottom: 1.75rem;
+      width: 50%;
+      float: left;
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+
+    .checked {
+      background-image: url("/img/icon-checkmark.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 2rem;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      margin-right: 20px;
+    }
+
+
+  }
 
 }
 
