@@ -1,5 +1,4 @@
 var gulp = require("gulp");
-var clean = require("gulp-clean");
 var sass = require("gulp-sass");
 var sourcemaps = require("gulp-sourcemaps");
 var postcss = require("gulp-postcss");
@@ -8,9 +7,11 @@ var mq4HoverShim = require("mq4-hover-shim");
 var rimraf = require("rimraf").sync;
 var browser = require("browser-sync");
 var panini = require("panini");
-var concat = require("gulp-concat");
 var port = process.env.SERVER_PORT || 8080;
 var nodepath = "node_modules/";
+var cleanCSS= require('gulp-clean-css');
+var concat = require('gulp-concat');
+var minify = require('gulp-minify');
 
 // Starts a BrowerSync instance
 gulp.task("server", ["build"], function() {
@@ -52,15 +53,15 @@ gulp.task("compile-sass", function() {
         "Android >= 4.4",
         "Opera >= 30"
       ]
-    }) //,
-    //cssnano(),
+    })
   ];
   return gulp
     .src("./scss/app.scss")
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on("error", sass.logError))
     .pipe(postcss(processors))
-    .pipe(sourcemaps.write())
+    //.pipe(sourcemaps.write())
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest("./dist/css/"));
 });
 
@@ -90,11 +91,19 @@ gulp.task("copy", function() {
     gulp.src(["assets/**/*"]).pipe(gulp.dest("dist"));
 });
 
+gulp.task('scripts', function() {
+    return gulp.src(['assets/js/main.js','assets/js/zip-lookup/zip-aca.js'])
+        .pipe(concat('all.js'))
+        .pipe(minify())
+        .pipe(gulp.dest('./dist/js'));
+});
+
 
 gulp.task("build", [
   "clean",
   "compile-sass",
   "compile-html",
-  "copy"
+  "copy",
+  "scripts"
 ]);
 gulp.task("default", ["server", "watch"]);
