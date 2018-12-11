@@ -93,7 +93,7 @@ gulp.task("copy", function() {
 
 gulp.task('scripts', function() {
     return gulp.src(['assets/js/main.js','assets/js/zip-lookup/zip-aca.js'])
-        .pipe(concat('all.js'))
+        .pipe(concat('app.js'))
         .pipe(minify())
         .pipe(gulp.dest('./dist/js'));
 });
