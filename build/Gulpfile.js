@@ -56,7 +56,7 @@ gulp.task("compile-sass", function() {
     })
   ];
   return gulp
-    .src("./scss/app.scss")
+    .src("./scss/styles.scss")
     //.pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on("error", sass.logError))
     .pipe(postcss(processors))
